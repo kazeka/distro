@@ -1,25 +1,8 @@
 #!/usr/bin/env bash
 
-THIS_DIR=$(cd $(dirname $0); pwd)
+THIS_DIR="/home/rnd/grus/torch"
 PREFIX="${THIS_DIR}/install"
-BATCH_INSTALL=0
-
-while getopts 'bh:' x; do
-    case "$x" in
-        h)
-            echo "usage: $0
-This script will install Torch and related, useful packages into $PREFIX.
-
-    -b      Run without requesting any user input (will automatically add PATH to shell profile)
-"
-            exit 2
-            ;;
-        b)
-            BATCH_INSTALL=1
-            ;;
-    esac
-done
-
+BATCH_INSTALL=1
 
 # Scrub an anaconda install, if exists, from the PATH.
 # It has a malformed MKL library (as of 1/17/2015)
